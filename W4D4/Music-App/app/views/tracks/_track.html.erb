@@ -1,0 +1,13 @@
+<br>
+Title: <%= link_to track.title, track_url(track) %>
+<br><br>
+Artist: <%= link_to track.band.name, band_url(track.album.band_id) %>
+<br><br>
+Album: <%= link_to track.album.name, album_url(track.album_id) %>
+<br><br>
+Type: <%= track.track_type %>
+<br><br>
+Lyrics: <%= track.lyrics %>
+<br><br>
+--------------------------
+<br>

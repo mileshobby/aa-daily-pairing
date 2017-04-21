@@ -1,0 +1,35 @@
+<% action = track.persisted? ? track_url(track) : tracks_url %>
+
+<form action="<%=action%>" method="post">
+  <%= change_method_edit(track) %>
+  <%= auth_token %>
+
+  <label for="title">Track Title</label>
+  <input type="text" name="track[title]" value="<%=track.title %>">
+
+  <br><br>
+
+  <label for="track_album">Album</label>
+  <select name="track[album_id]">
+    <% Album.all.each do |album| %>
+      <option
+        value="<%=album.id%>"
+        "<%="selected" if track.album_id == album.id %>" >
+        <%= album.name %>
+      </option>
+    <% end %>
+  </select>
+
+  <br><br>
+
+  <label for="track_type">Track Type:</label>
+  BONUS<input type="radio" name="track[track_type]" value="Bonus">
+  REGULAR<input type="radio" name="track[track_type]" value="Regular">
+
+  <br><br>
+
+  <label for="lyrics">Lyrics: </label>
+  <textarea name="track[lyrics]"></textarea>
+
+  <input type="submit" value="Submit">
+</form>

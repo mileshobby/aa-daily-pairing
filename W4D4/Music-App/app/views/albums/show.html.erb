@@ -1,0 +1,6 @@
+<%= render @album %>
+<%= button_to "add track", new_album_track_url(@album), method: "get" %>
+----------------------
+<br>
+<%= link_to "edit", edit_album_url(@album)%><br><br>
+<%= button_to "destroy", album_url(@album), method: "delete" %>

@@ -1,0 +1,15 @@
+<h2>Register for our site!</h2>
+
+<form action="<%=users_url%>" method="POST">
+  <%= auth_token %>
+  <input type="text" name="user[email]" placeholder="email">
+
+  <br><br>
+
+  <input type="password" name="user[password]" placeholder="password">
+
+  <br><br>
+
+  <input type="submit" value="Register">
+
+</form>

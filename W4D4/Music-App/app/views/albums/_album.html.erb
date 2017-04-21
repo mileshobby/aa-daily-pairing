@@ -1,0 +1,9 @@
+<br>
+Album: <%= link_to album.name, album_url(album) %>
+<br><br>
+Artist: <%= link_to album.band.name, band_url(album.band_id) %>
+<br><br>
+Version: <%= album.version %>
+<br><br>
+--------------------------
+<br>
