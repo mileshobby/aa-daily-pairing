@@ -1,0 +1,10 @@
+<h2> <u><%= @sub.title %></u> </h2>
+<h4>Created By: <%=@sub.moderator.username%> </h4>
+
+<% if current_user == @sub.moderator %>
+  <%= link_to "Edit Subforum", edit_sub_url(@sub) %>
+<% end %>
+
+<p>
+<%= @sub.description %>
+</p>

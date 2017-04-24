@@ -10,21 +10,14 @@
 
   <body>
 
-    <% unless flash[:errors].nil? %>
-      <ul>
-        <% flash[:errors].each do |error| %>
-          <li><%= error  %></li>
-        <% end %>
-      </ul>
-      <br>
-    <% end %>
+    <%= render "shared/errors" %>
 
     <%if logged_in? %>
       Logged In As: <%= current_user.username %>
-      <br>
+      <br><br>
       <%= button_to "Log Out", user_url(current_user), method: "delete" %>
     <% end %>
-    
+
     <%= yield %>
   </body>
 </html>

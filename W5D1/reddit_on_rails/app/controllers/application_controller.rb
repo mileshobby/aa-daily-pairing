@@ -13,7 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_logged_in
-    redirect_to new_session_url unless logged_in?
+    unless logged_in?
+      flash[:errors] = ["Please Log in to Use This Site"]
+      redirect_to new_session_url
+    end
   end
 
   def logged_in?
