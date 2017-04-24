@@ -1,12 +1,37 @@
 <h1><u><%= @post.title %></u></h1>
-Made By: <%= @post.author.username %>
+-made by: <%= @post.author.username %>
 <br><br>
-<%= @post.content %>
+<p>
+  <%= @post.content %>
+  <% if @post.url %>
+  <br>
+    See more by clicking <a href="<%= @post.url %>">here</a>
+  <% end %>
+</p>
 
+
+<h3>Comments: </h3>
+<% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+  <%= "#{comment.author.username} says: " %>
+  <%= comment.content %>
+  <br>
+  <%= link_to "See Comment Thread", comment_url(comment)  %>
+  <ul>
+     <% comment.child_comments.each do |child| %>
+        <li><%= "#{child.author.username} replied: #{child.content}"%></li>
+      <% end %>
+  </ul>
+
+  <br>
+<% end %>
+
+
+
+<br>
+----------------------
+<br>
+<%= link_to "Leave a Comment", new_post_comment_url(@post) %>
 <% if current_user = @post.author %>
-  <br>
-  ----------------------
-  <br>
   <%= button_to "Edit Post", edit_post_url(@post), method: "get" %>
   <%= button_to "Destroy Post", post_url(@post), method: "delete" %>
 <% end %>

@@ -1,6 +1,5 @@
 <% action = post.persisted? ? post_url(post) : posts_url %>
 <% buton = post.persisted? ? "Update" : "Create" %>
-<% sub_id = post.persisted? ? post.sub_id : params[:sub_id]  %>
 
 <form action="<%= action %>" method="post">
   <% if post.persisted? %>

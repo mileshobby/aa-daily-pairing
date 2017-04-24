@@ -16,8 +16,13 @@ class User < ApplicationRecord
   attr_reader :password
   after_initialize :ensure_session_token
 
-  has_many :subs
-  has_many :posts
+  has_many :subs, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :comments,
+    class_name: "Comment",
+    primary_key: :id,
+    foreign_key: :user_id,
+    dependent: :destroy
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

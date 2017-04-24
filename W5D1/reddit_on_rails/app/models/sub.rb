@@ -19,10 +19,11 @@ class Sub < ApplicationRecord
     foreign_key: :user_id
 
   has_many :postsubs
-  
+
   has_many :posts,
     through: :postsubs,
-    source: :post
+    source: :post,
+    dependent: :destroy
 
 
 end
