@@ -18,6 +18,7 @@ class Sub < ApplicationRecord
     primary_key: :id,
     foreign_key: :user_id
 
+  has_many :posts
 
 
 end
