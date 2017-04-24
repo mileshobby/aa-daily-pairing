@@ -9,8 +9,6 @@
 
   <%= auth_token %>
 
-  <input type="hidden" name="post[sub_id]" value="<%= sub_id %>">
-
   <label>
   Title: <br>
   <input type="text" name="post[title]" value="<%=post.title %>">
@@ -18,6 +16,22 @@
 
   <br><br>
 
+  <input type="hidden" name="post[sub_ids][]" value="">
+  What SubForums Would You Like to Post To? <br>
+  <% Sub.all.each do |sub| %>
+    <label>
+    <input
+      type="checkbox"
+      name="post[sub_ids][]"
+      value="<%=sub.id %>"
+      <%= "checked" if post.sub_ids.include?(sub.id) %>
+      >
+      <%=sub.title%>
+      <br>
+    </label>
+  <% end %>
+
+  <br>
   <label>
   URL: <br>
   <input type="text" name="post[url]" value="<%=post.url %>">

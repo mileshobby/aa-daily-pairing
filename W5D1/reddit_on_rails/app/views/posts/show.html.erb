@@ -7,5 +7,6 @@ Made By: <%= @post.author.username %>
   <br>
   ----------------------
   <br>
-  <%= link_to "Edit Post", edit_post_url(@post) %>
+  <%= button_to "Edit Post", edit_post_url(@post), method: "get" %>
+  <%= button_to "Destroy Post", post_url(@post), method: "delete" %>
 <% end %>

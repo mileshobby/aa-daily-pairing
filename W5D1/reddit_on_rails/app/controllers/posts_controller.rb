@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @post.author = current_user
     if @post.valid?
       @post.save
-      redirect_to sub_url(@post.sub)
+      redirect_to sub_url(@post.subs.first)
     else
       flash.now[:errors] = @post.errors.full_messages
       render :new
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    redirect_to sub_url(@post)
+    redirect_to sub_url(@post.subs.first)
   end
 
   def show
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :url, :content, :sub_id)
+    params.require(:post).permit(:title, :url, :content, sub_ids: [])
   end
 
   def ensure_correct_author

@@ -1,6 +1,6 @@
 class SubsController < ApplicationController
   before_action :ensure_logged_in
-  before_action :ensure_correct_moderator, only: :edit
+  before_action :ensure_correct_moderator, only: [:edit, :destroy]
 
   def index
     @subs = Sub.all
@@ -42,6 +42,12 @@ class SubsController < ApplicationController
   def show
     @sub = Sub.find_by(id: params[:id])
     render :show
+  end
+
+  def destroy
+    @sub = Sub.find_by(id: params[:id])
+    @sub.destroy
+    redirect_to subs_url
   end
 
   private

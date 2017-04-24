@@ -1,4 +1,4 @@
-<h1>All The Subforums</h1>
+<h1><u>All The Subforums</u></h1>
 
 <ul>
   <% @subs.each do |sub| %>
@@ -6,3 +6,9 @@
     <br>
   <% end %>
 </ul>
+
+---------------------
+<br>
+<%= link_to "Create a SubForum!", new_sub_url %>
+<br>
+<%= link_to "Make a Post!", new_post_url %>

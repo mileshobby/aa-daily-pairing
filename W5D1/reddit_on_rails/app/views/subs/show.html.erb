@@ -15,6 +15,7 @@ Description: <%= @sub.description %>
 ---------------------------
 <br>
 <% if current_user == @sub.moderator %>
+  <%= button_to "Delete This Subform", sub_url(@sub), method: "delete" %>
   <%= link_to "Edit Subforum", edit_sub_url(@sub) %>
   <br>
 <% end %>
