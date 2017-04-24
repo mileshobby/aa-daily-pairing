@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+ *{
+   font-family: cursive;
+   background-color:AliceBlue;
+ }
+
+ .login{
+   float: right;
+ }
+
+ .center{
+   float:right;
+ }

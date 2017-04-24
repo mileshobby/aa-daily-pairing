@@ -1,10 +1,21 @@
 <h2> <u><%= @sub.title %></u> </h2>
 <h4>Created By: <%=@sub.moderator.username%> </h4>
 
+<p>
+Description: <%= @sub.description %>
+</p>
+
+<h3>Posts:</h3>
+<ul>
+<% @sub.posts.each do |post| %>
+  <li><%=link_to post.title, post_url(post)%></li>
+<% end %>
+</ul>
+
+---------------------------
+<br>
 <% if current_user == @sub.moderator %>
   <%= link_to "Edit Subforum", edit_sub_url(@sub) %>
+  <br>
 <% end %>
-
-<p>
-<%= @sub.description %>
-</p>
+<%= link_to "Make a Post!", new_post_url(sub_id: @sub.id)%>

@@ -1,0 +1,35 @@
+<% action = post.persisted? ? post_url(post) : posts_url %>
+<% buton = post.persisted? ? "Update" : "Create" %>
+<% sub_id = post.persisted? ? post.sub_id : params[:sub_id]  %>
+
+<form action="<%= action %>" method="post">
+  <% if post.persisted? %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+  <%= auth_token %>
+
+  <input type="hidden" name="post[sub_id]" value="<%= sub_id %>">
+
+  <label>
+  Title: <br>
+  <input type="text" name="post[title]" value="<%=post.title %>">
+  </label>
+
+  <br><br>
+
+  <label>
+  URL: <br>
+  <input type="text" name="post[url]" value="<%=post.url %>">
+  </label>
+
+  <br><br>
+
+  <label>
+  Content: <br>
+  <textarea name="post[content]" rows="8" cols="80"><%= post.content %></textarea>
+  </label>
+
+  <input type="submit" value="<%= buton %>">
+
+</form>

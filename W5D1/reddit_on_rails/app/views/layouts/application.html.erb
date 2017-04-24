@@ -12,12 +12,21 @@
 
     <%= render "shared/errors" %>
 
+    <nav class="login">
+      <img src="http://stuffpoint.com/reddit/image/193559-reddit-reddit-banner.png" width="200px"
+          alt="Reddit Banner">
+          <br>
     <%if logged_in? %>
       Logged In As: <%= current_user.username %>
       <br><br>
-      <%= button_to "Log Out", user_url(current_user), method: "delete" %>
+      <%= button_to "Log Out", session_url, method: "delete" %>
+    <% else %>
+      <%= button_to "Sign Up", new_user_url, method:"get" %>
+      <%= button_to "Sign In", new_session_url, method:"get" %>
     <% end %>
+    </nav>
 
+    <%= link_to "All Subforums", subs_url %>
     <%= yield %>
   </body>
 </html>
