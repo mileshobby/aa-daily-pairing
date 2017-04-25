@@ -14,4 +14,12 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  def comments_by_parent_id
+    @parent_comments = Hash.new {|h,k| h[k] = [] }
+    self.comments.includes(:author).each do |comment|
+      @parent_comments[comment.parent_comment_id] << comment
+    end
+    @parent_comments
+  end
+
 end
