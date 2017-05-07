@@ -34,7 +34,7 @@ class AutoComplete extends React.Component {
     const matches = this.findNames().map(
           (name)=>(<li onClick={this.complete} key={name}>{name}</li>));
     return (
-      <div className="widget" id="autocomplete">
+      <div className="widget small" id="autocomplete">
         <h1>Autocomplete</h1>
         <input id="input" type="text" onChange={this.handleInput} value={this.state.inputVal} placeholder='Search...'></input>
         <ul>
