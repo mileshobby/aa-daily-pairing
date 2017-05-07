@@ -1,0 +1,57 @@
+body, h1, h2, div, ul, li, img, a, p{
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+li {
+  list-style: none;
+}
+
+#root{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.widget{
+  font-family: 'Open Sans', sans-serif;
+  width: 500px;
+  margin: 0 auto;
+  border: 2px solid black;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+#autocomplete{
+  background-color: pink;
+}
+
+#autocomplete li:hover{
+  cursor: pointer;
+}
+
+#weather{
+  background-color: lightgreen;
+  text-align: center;
+}
+
+#weather h1{
+  text-align: left;
+}
+
+#clock{
+  background-color: orange;
+}
+
+#time{
+  display: flex;
+  justify-content: space-between;
+}
+
+#date{
+  display: flex;
+  justify-content: space-between;
+}

@@ -10,20 +10,19 @@ class Route
 
   # checks if pattern matches path and method matches request method
   def matches?(req)
-    debugger
-    req.request_method.downcase == @http_method &&
+    req.request_method.downcase == @http_method.to_s &&
       req.path =~ @pattern
   end
 
   # use pattern to pull out route params (save for later?)
   # instantiate controller and call controller action
   def run(req, res)
-    match_data = res.path.match(@pattern)
+    match_data = req.path.match(@pattern)
     route_params = {}
     match_data.names.each do |name|
       route_params[name] = match_data[name]
     end
-    controller = Object.const_get(@controller_class).new(req, res, route_params)
+    controller = @controller_class.new(req, res, route_params)
     controller.invoke_action(@action_name)
   end
 end
@@ -37,7 +36,7 @@ class Router
 
   # simply adds a new route to the list of routes
   def add_route(pattern, method, controller_class, action_name)
-    @routes = Route.new(pattern, method, controller_class, action_name)
+    @routes << Route.new(pattern, method, controller_class, action_name)
   end
 
   # evaluate the proc in the context of the instance
@@ -67,9 +66,9 @@ class Router
     route = match(req)
     if route.nil?
       res.status = 404
-      res['Content-type'] = "Action doesn't exist :( "
+      res['Content-Type'] = "Action doesn't exist :( "
     else
-      route.run
+      route.run(req, res)
     end
   end
 end
