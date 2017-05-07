@@ -1,0 +1,37 @@
+ul {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid black;
+  border-radius: 25px;
+  justify-content: flex-end;
+  height: 500px;
+  width: 33%;
+  list-style: none;
+  align-items: center;
+  padding-left: 0;
+}
+
+ul li {
+  border: 5px solid black;
+  border-radius: 50px;
+  background-color: gray;
+}
+
+figure.hanoi {
+  display: flex;
+}
+
+#disc3{
+  height: 50px;
+  width: 200px;
+}
+
+#disc2{
+  height: 50px;
+  width: 150px;
+}
+
+#disc1{
+  height: 50px;
+  width: 100px;
+}
