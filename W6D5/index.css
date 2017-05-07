@@ -55,3 +55,8 @@ li {
   display: flex;
   justify-content: space-between;
 }
+
+#autocomplete li{
+  list-style-type: square;
+  margin-left: 20px;
+}
